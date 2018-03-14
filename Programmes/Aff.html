@@ -8,27 +8,23 @@
 	<body>
 		<script src="../Libs/three.min.js"></script>
 		<script src="../Libs/OBJLoader.js"></script>
+		<script src="Personnage.js"></script>
 
 		<script>
 			var container; 
             
-			var camera, scene, renderer;
-            var dax=0.002;
+			var scene, renderer;
+			var dax=0.002;
+			var pers = new Personnage();
 			function onWindowResize() {
-                camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
+                pers.camera.aspect = window.innerWidth / window.innerHeight;
+				pers.camera.updateProjectionMatrix();
 				renderer.setSize(window.innerWidth, window.innerHeight);
 			}
 
 			function Init() {
 				container = document.createElement('div');
 				document.body.appendChild(container);
-
-				camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 2000);
-                camera.rotation.z=0;
-                camera.rotation.x=0;
-                camera.rotation.y=0;
-                camera.position.z=10;
 
 				// scene
 				scene = new THREE.Scene();
@@ -80,7 +76,7 @@ scene.add(group);
 				window.addEventListener('resize', onWindowResize, false);
 			}
 			function Afficher() {
-                renderer.render(scene,camera);
+                renderer.render(scene,pers.camera);
 			}
 			function Animer() {
 				requestAnimationFrame(Animer);
