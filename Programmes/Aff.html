@@ -18,7 +18,7 @@
 			var pers = new Personnage();
 			function onWindowResize() {
                 pers.camera.aspect = window.innerWidth / window.innerHeight;
-				pers.children[0].updateProjectionMatrix();
+				pers.camera.updateProjectionMatrix();
 				renderer.setSize(window.innerWidth, window.innerHeight);
 			}
 
@@ -31,8 +31,7 @@
 				 */
 				scene = new THREE.Scene();
 
-				var ambient = new THREE.AmbientLight(0xffffff);
-				scene.add(ambient);
+				
 
 				/***
 				 * Texture
@@ -74,7 +73,7 @@
 			function Afficher() {
                 renderer.render(scene,pers.camera);
 			}
-			
+
 			function Animer() {
 				requestAnimationFrame(Animer);
 				Afficher();
