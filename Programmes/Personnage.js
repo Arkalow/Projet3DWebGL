@@ -6,7 +6,7 @@ function Personnage(){
      */
     this.rotation.x = Math.PI * 90 / 200
     this.position.set(0, 0, 0)
-    this.speed = 0.2
+    this.speed = 0.07
 
     /**
      * Camera
