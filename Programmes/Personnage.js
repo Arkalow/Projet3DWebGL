@@ -6,6 +6,7 @@ function Personnage(){
      */
     this.rotation.x = Math.PI * 90 / 200
     this.position.set(0, 0, 0)
+    this.speed = 0.2
 
     /**
      * Camera
@@ -15,13 +16,19 @@ function Personnage(){
 
     /**
      * Lumière
+     * argument : color, intensity, distance
      */
-    // this.ambient = new THREE.AmbientLight(0x222222);
-    // this.add(this.ambient);
-    // console.log(this.ambient)
-    this.light = new THREE.PointLight(0xF1DA00, 0.4, 30);
+    this.light = new THREE.PointLight(0xF1DA00, 0.5, 30);
     this.add(this.light)
                 
+    /**
+     * move
+     */
+    this.move = function(x, y, z){
+        this.position.x += x
+        this.position.y += y
+        this.position.z += z
+    }
 
     console.log(this)   
 }

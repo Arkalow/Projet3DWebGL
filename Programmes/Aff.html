@@ -70,12 +70,33 @@
 				window.addEventListener('resize', onWindowResize, false);
 			}
 
+						// Gestion du clavier
+			window.onkeydown = function(event) {
+				var e = event || window.event;
+				var key = e.which || e.keyCode;
+				switch(key) {
+				case 38 : //haut
+					pers.move(0, pers.speed, 0);
+					break;
+				case 40 : //bas
+					pers.move(0, -pers.speed, 0);
+					break;
+				case 37 : //gauche
+					pers.move(-pers.speed, 0, 0);
+					break;
+				case 39 : //droite
+					pers.move(pers.speed, 0, 0);
+					break;
+				}
+			}
+
 			function Afficher() {
                 renderer.render(scene,pers.camera);
 			}
 
 			function Animer() {
 				requestAnimationFrame(Animer);
+				
 				Afficher();
 			}
 
