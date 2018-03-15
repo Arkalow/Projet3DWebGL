@@ -17,7 +17,7 @@
 			var dax=0.002;
 			var pers = new Personnage();
 			function onWindowResize() {
-                pers.children[0].aspect = window.innerWidth / window.innerHeight;
+                pers.camera.aspect = window.innerWidth / window.innerHeight;
 				pers.children[0].updateProjectionMatrix();
 				renderer.setSize(window.innerWidth, window.innerHeight);
 			}
@@ -26,14 +26,17 @@
 				container = document.createElement('div');
 				document.body.appendChild(container);
 
-				// scene
+				/***
+				 * Scene
+				 */
 				scene = new THREE.Scene();
 
 				var ambient = new THREE.AmbientLight(0xffffff);
 				scene.add(ambient);
 
-				// texture
-
+				/***
+				 * Texture
+				 */
 				var manager = new THREE.LoadingManager();
 				manager.onProgress = function (item, loaded, total) {
 					console.log(item, loaded, total);
@@ -46,7 +49,9 @@
 					texture.needsUpdate = true;
 				});
 
-				// Chargement du modèle
+				/***
+				 * Chargement du modèle
+				 */
 				var loader = new THREE.OBJLoader(manager);
 				loader.load('../TranseptSud/transeptSudBox.obj', function (object) {
 					object.traverse(function (child) {
@@ -57,35 +62,19 @@
 					object.position.z = 20 //on place le sol de la salle à 0 aproximatif
 					scene.add(object)
 				});
-				scene.add(pers)
-    // var geometry = new THREE.CubeGeometry(2,2,2)
-    // var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
-    // var mesh = new THREE.Mesh(geometry, material)
-	// mesh.position.set(0, 0, 0)
-	// pers.add(mesh)
-				
 
-// var geometry = new THREE.CubeGeometry(2,2,2)
-// var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
-// var cube1 = new THREE.Mesh(geometry, material)
-// var cube2 = new THREE.Mesh(geometry, material)
-// cube1.position.set(3, 0, -10)
-// cube2.position.set(-3, 0, -10)
-
-// var group = new THREE.Object3D();
-// group.add(cube1);
-// group.add(cube2);
-// scene.add(group);
-
+				scene.add(pers)//Ajout du personnage à la scene
 
 				renderer = new THREE.WebGLRenderer();
 				renderer.setSize(window.innerWidth, window.innerHeight);
 				container.appendChild(renderer.domElement);
 				window.addEventListener('resize', onWindowResize, false);
 			}
+
 			function Afficher() {
-                renderer.render(scene,pers.children[0]);
+                renderer.render(scene,pers.camera);
 			}
+			
 			function Animer() {
 				requestAnimationFrame(Animer);
 				Afficher();

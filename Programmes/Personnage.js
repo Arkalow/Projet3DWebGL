@@ -7,6 +7,6 @@ function Personnage(){
 
     this.__proto__.add(this.camera)
     this.position.set(0, 0, 0)
-    console.log(this)
-    
+
+    console.log(this)   
 }
