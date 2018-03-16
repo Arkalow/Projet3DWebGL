@@ -2,7 +2,26 @@ var container;
 var scene, renderer;
 var dax=0.002;
 var pers = new Personnage();
+
 var touches = []
+// Gestion du clavier
+window.onkeydown = function(event) {
+    var e = event || window.event;
+    var key = e.which || e.keyCode;
+
+    if(touches.indexOf(key)<0) {
+        touches.push(key);
+    }
+}
+window.onkeyup = function(event) {
+    var e = event || window.event;
+    var key = e.which || e.keyCode;
+
+    index = touches.indexOf(key)
+    if(index>=0) {
+      touches.splice(index,1);
+    }
+}
 function onWindowResize() {
     pers.camera.aspect = window.innerWidth / window.innerHeight;
     pers.camera.updateProjectionMatrix();
@@ -57,25 +76,6 @@ function Init() {
     window.addEventListener('resize', onWindowResize, false);
 }
 
-// Gestion du clavier
-window.onkeydown = function(event) {
-    var e = event || window.event;
-    var key = e.which || e.keyCode;
-
-    if(touches.indexOf(key)<0) {
-        touches.push(key);
-    }
-}
-window.onkeyup = function(event) {
-    var e = event || window.event;
-    var key = e.which || e.keyCode;
-
-    index = touches.indexOf(key)
-    if(index>=0) {
-      touches.splice(index,1);
-    }
-}
-
 function Afficher() {
     renderer.render(scene,pers.camera);
 }
@@ -84,19 +84,41 @@ function Animer() {
     requestAnimationFrame(Animer);
 
     if(touches.indexOf(38) >= 0){//haut
-        pers.move(0, pers.speed, 0)
+        pers.move(
+            -Math.cos((Math.PI * 90/180) - pers.rotation.y) * pers.speedMove, 
+            Math.cos(pers.rotation.y) * pers.speedMove,
+            0
+        )
     }
     if(touches.indexOf(40) >= 0){//bas
-        pers.move(0, -pers.speed, 0)
+        pers.move(
+            Math.cos((Math.PI * 90/180) - pers.rotation.y) * pers.speedMove, 
+            -Math.cos(pers.rotation.y) * pers.speedMove,
+            0
+        )
     }
     if(touches.indexOf(37) >= 0){//gauche
-        pers.move(-pers.speed, 0, 0)
+        pers.move(
+            -Math.cos(pers.rotation.y) * pers.speedMove, 
+            -Math.cos((Math.PI * 90/180) - pers.rotation.y) * pers.speedMove,
+            0
+        )
     }
     if(touches.indexOf(39) >= 0){//droite
-        pers.move(pers.speed, 0, 0)
+        pers.move(
+            Math.cos(pers.rotation.y) * pers.speedMove, 
+            Math.cos((Math.PI * 90/180) - pers.rotation.y) * pers.speedMove,
+            0
+        )
     }
-
+    if(touches.indexOf(220) >= 0){
+        pers.rotate(pers.speedRotate)
+    }
+    if(touches.indexOf(87) >= 0){
+        pers.rotate(-pers.speedRotate)
+    }
     Afficher();
+    console.log("x : " + pers.position.x + "| y : " + pers.position.y)
 }
 
 Init();

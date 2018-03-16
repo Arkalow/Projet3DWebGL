@@ -4,9 +4,10 @@ function Personnage(){
     /**
      * Position
      */
-    this.rotation.x = Math.PI * 90 / 200
+    this.rotation.x = Math.PI * 90 / 180
     this.position.set(0, 0, 0)
-    this.speed = 0.07
+    this.speedMove = 0.07
+    this.speedRotate = 0.09
 
     /**
      * Camera
@@ -29,6 +30,12 @@ function Personnage(){
         this.position.y += y
         this.position.z += z
     }
-
-    console.log(this)   
+    /**
+     * Rotation
+     */
+    this.rotate = function(yRotation){
+        this.rotation.y += yRotation
+    }
+    
+    console.log(this)
 }
