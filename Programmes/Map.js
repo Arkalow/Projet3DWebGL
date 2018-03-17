@@ -1,4 +1,4 @@
-function Map(){
+function Map(imageURL, objectURL){
     this.__proto__ = new THREE.Object3D
     var self = this
     /***
@@ -11,7 +11,7 @@ function Map(){
     var texture = new THREE.Texture();
 
     var loader = new THREE.ImageLoader(manager);
-    loader.load('../TranseptSud/TranseptTexture4096.jpg', function (image) {
+    loader.load(imageURL, function (image) {
         texture.image = image;
         texture.needsUpdate = true;
     });
@@ -20,7 +20,7 @@ function Map(){
      * Chargement du modèle
      */
     var loader = new THREE.OBJLoader(manager);
-    loader.load('../TranseptSud/transeptSudBox.obj', function (object) {
+    loader.load(objectURL, function (object) {
         object.traverse(function (child) {
             if (child instanceof THREE.Mesh) {
                 child.material.map = texture;

@@ -2,7 +2,7 @@ var container;
 var scene, renderer;
 var dax=0.002;
 var pers = new Personnage();
-var map = new Map();
+var map = new Map('../TranseptSud/TranseptTexture4096.jpg', '../TranseptSud/transeptSudBox.obj');
 
 var touches = []
 // Gestion du clavier
@@ -39,8 +39,6 @@ function Init() {
     scene = new THREE.Scene();
     map.add(pers)
     scene.add(map);
-    
-
     
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
