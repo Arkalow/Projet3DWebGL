@@ -30,13 +30,33 @@ function Personnage(){
         this.position.y += y
         this.position.z += z
     }
+    this.forward = function(){
+        this.position.x += -Math.cos((Math.PI * 90/180) - this.rotation.y) * this.speedMove
+        this.position.y += Math.cos(this.rotation.y) * this.speedMove
+        this.position.y += 0
+    }
+    this.backward = function(){
+        this.position.x += Math.cos((Math.PI * 90/180) - this.rotation.y) * this.speedMove
+        this.position.y += -Math.cos(this.rotation.y) * this.speedMove
+        this.position.y += 0
+    }
+    this.leftward = function(){
+        this.position.x += -Math.cos(this.rotation.y) * this.speedMove
+        this.position.y += -Math.cos((Math.PI * 90/180) - this.rotation.y) * this.speedMove
+        this.position.y += 0
+    }
+    this.rightward = function(){
+        this.position.x += Math.cos(this.rotation.y) * this.speedMove
+        this.position.y += Math.cos((Math.PI * 90/180) - this.rotation.y) * this.speedMove
+        this.position.y += 0
+    }
 
     /**
      * Rotation horizontale
      */
     this.rotate = function(x, y){
-        this.rotation.y += y
-        this.camera.rotation.x += x
+        this.rotation.y += y * this.speedRotate
+        this.camera.rotation.x += x * this.speedRotate
     }
     
     console.log(this)

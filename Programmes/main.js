@@ -80,51 +80,36 @@ function Init() {
  * Déplacement du personnage
  */
 function move(){
-    if(touches.indexOf(38) >= 0){//haut
-        pers.move(
-            -Math.cos((Math.PI * 90/180) - pers.rotation.y) * pers.speedMove, 
-            Math.cos(pers.rotation.y) * pers.speedMove,
-            0
-        )
-    }
-    if(touches.indexOf(40) >= 0){//bas
-        pers.move(
-            Math.cos((Math.PI * 90/180) - pers.rotation.y) * pers.speedMove, 
-            -Math.cos(pers.rotation.y) * pers.speedMove,
-            0
-        )
-    }
-    if(touches.indexOf(37) >= 0){//gauche
-        pers.move(
-            -Math.cos(pers.rotation.y) * pers.speedMove, 
-            -Math.cos((Math.PI * 90/180) - pers.rotation.y) * pers.speedMove,
-            0
-        )
-    }
-    if(touches.indexOf(39) >= 0){//droite
-        pers.move(
-            Math.cos(pers.rotation.y) * pers.speedMove, 
-            Math.cos((Math.PI * 90/180) - pers.rotation.y) * pers.speedMove,
-            0
-        )
-    }
 
     /***
      * Rotation
      */
-    if(touches.indexOf(220) >= 0){
-        pers.rotate(0, pers.speedRotate)
+    if(touches.indexOf(220) >= 0){//<>
+        pers.rotate(0, 1)
     }
-    if(touches.indexOf(87) >= 0){
-        pers.rotate(0, -pers.speedRotate)
+    if(touches.indexOf(87) >= 0){//w
+        pers.rotate(0, -1)
     }
-    if(touches.indexOf(16) >= 0){
+    if(touches.indexOf(16) >= 0){ //Shift
         if(touches.indexOf(38) >= 0){//haut
-            pers.rotate(pers.speedRotate, 0);
+            pers.rotate(1, 0);
         }
         if(touches.indexOf(40) >= 0){//bas
-            pers.rotate(-pers.speedRotate, 0);
+            pers.rotate(-1, 0);
         }
+    }else{ //pas shift
+        if(touches.indexOf(38) >= 0){//haut
+            pers.forward()
+        }
+        if(touches.indexOf(40) >= 0){//bas
+            pers.backward()
+        }
+    }
+    if(touches.indexOf(37) >= 0){//gauche
+        pers.leftward()
+    }
+    if(touches.indexOf(39) >= 0){//droite
+        pers.rightward()
     }
 }
 
