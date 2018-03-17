@@ -2,6 +2,7 @@ var container;
 var scene, renderer;
 var dax=0.002;
 var pers = new Personnage();
+var map = new Map('../TranseptSud/TranseptTexture4096.jpg', '../TranseptSud/transeptSudBox.obj');
 
 var touches = []
 // Gestion du clavier
@@ -22,6 +23,7 @@ window.onkeyup = function(event) {
       touches.splice(index,1);
     }
 }
+
 function onWindowResize() {
     pers.camera.aspect = window.innerWidth / window.innerHeight;
     pers.camera.updateProjectionMatrix();
@@ -36,40 +38,12 @@ function Init() {
      * Scene
      */
     scene = new THREE.Scene();
+    map.add(pers)
+    scene.add(map);
 
+    // var light = new THREE.AmbientLight();
+    // scene.add(light)
     
-
-    /***
-     * Texture
-     */
-    var manager = new THREE.LoadingManager();
-    manager.onProgress = function (item, loaded, total) {
-        console.log(item, loaded, total);
-    };
-    var texture = new THREE.Texture();
-
-    var loader = new THREE.ImageLoader(manager);
-    loader.load('../TranseptSud/TranseptTexture4096.jpg', function (image) {
-        texture.image = image;
-        texture.needsUpdate = true;
-    });
-
-    /***
-     * Chargement du modèle
-     */
-    var loader = new THREE.OBJLoader(manager);
-    loader.load('../TranseptSud/transeptSudBox.obj', function (object) {
-        object.traverse(function (child) {
-            if (child instanceof THREE.Mesh) {
-                child.material.map = texture;
-            }
-        });
-        object.position.z = 20 //on place le sol de la salle à 0 aproximatif
-        scene.add(object)
-    });
-
-    scene.add(pers)//Ajout du personnage à la scene
-
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
