@@ -38,6 +38,6 @@ function Personnage(){
         this.rotation.y += y
         this.camera.rotation.x += x
     }
-    
+
     console.log(this)
 }

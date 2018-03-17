@@ -23,6 +23,7 @@ window.onkeyup = function(event) {
       touches.splice(index,1);
     }
 }
+
 function onWindowResize() {
     pers.camera.aspect = window.innerWidth / window.innerHeight;
     pers.camera.updateProjectionMatrix();
@@ -39,6 +40,10 @@ function Init() {
     scene = new THREE.Scene();
     map.add(pers)
     scene.add(map);
+    var sphere = new THREE.Mesh(new THREE.SphereGeometry(50,50,50),
+    new THREE.MeshBasicMaterial({color: 0xFF0000}));
+console.log(sphere)
+scene.add(sphere)
     
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
