@@ -40,10 +40,9 @@ function Init() {
     scene = new THREE.Scene();
     map.add(pers)
     scene.add(map);
-    var sphere = new THREE.Mesh(new THREE.SphereGeometry(50,50,50),
-    new THREE.MeshBasicMaterial({color: 0xFF0000}));
-console.log(sphere)
-scene.add(sphere)
+
+    // var light = new THREE.AmbientLight();
+    // scene.add(light)
     
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);

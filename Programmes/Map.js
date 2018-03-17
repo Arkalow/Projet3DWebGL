@@ -26,13 +26,7 @@ function Map(imageURL, objectURL){
                 child.material.map = texture;
             }
         });
-        object.position.z = 20 //on place le sol de la salle à 0
         self.add(object)
     });
-
-    
-
-
-
     console.log(this)
 }
