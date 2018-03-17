@@ -56,7 +56,19 @@ function Personnage(){
      */
     this.rotate = function(x, y){
         this.rotation.y += y * this.speedRotate
-        this.camera.rotation.x += x * this.speedRotate
+        if(this.camera.rotation.x < 1.30 && this.camera.rotation.x >= -0.30){
+            
+        }
+    }
+    this.headUp = function(){
+        if(this.camera.rotation.x < 1.30){
+            this.camera.rotation.x += this.speedRotate
+        }
+    }
+    this.headDown = function(){
+        if(this.camera.rotation.x >= -0.30){
+            this.camera.rotation.x -= this.speedRotate
+        }
     }
 
     /**

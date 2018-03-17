@@ -66,10 +66,10 @@ function move(){
     }
     if(touches.indexOf(16) >= 0){ //Shift
         if(touches.indexOf(38) >= 0){//haut
-            pers.rotate(1, 0);
+            pers.headUp();
         }
         if(touches.indexOf(40) >= 0){//bas
-            pers.rotate(-1, 0);
+            pers.headDown();
         }
     }else{ //pas shift
         if(touches.indexOf(38) >= 0){//haut
