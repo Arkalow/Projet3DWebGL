@@ -54,11 +54,8 @@ function Personnage(){
     /**
      * Rotation horizontale
      */
-    this.rotate = function(x, y){
+    this.rotate = function(y){
         this.rotation.y += y * this.speedRotate
-        if(this.camera.rotation.x < 1.30 && this.camera.rotation.x >= -0.30){
-            
-        }
     }
     this.headUp = function(){
         if(this.camera.rotation.x < 1.30){
@@ -74,14 +71,14 @@ function Personnage(){
     /**
      * Bras du personnage
      */
-    var geometry = new THREE.CubeGeometry(0.5,1,0.5)
-    var material = new THREE.MeshBasicMaterial( {color: 0xd1d1d1} );
+    var geometry = new THREE.CubeGeometry(0.5,1.5,0.5)
+    var material = new THREE.MeshBasicMaterial( {clor: 0xd1d1d1} );
     var leftArm = new THREE.Mesh(geometry, material)
     var rightArm = new THREE.Mesh(geometry, material)
     leftArm.position.set(-1.5, -1, -3)
-    leftArm.rotation.set(1, 1, 1)
+    leftArm.rotation.set(1, 1.3, 1)
     rightArm.position.set(1.5, -1, -3)
-    rightArm.rotation.set(1, -1, -1)
+    rightArm.rotation.set(1, -1.3, -1)
     this.add(leftArm);
     this.add(rightArm);
 

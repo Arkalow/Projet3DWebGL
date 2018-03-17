@@ -41,8 +41,8 @@ function Init() {
     map.add(pers)
     scene.add(map);
 
-    // var light = new THREE.AmbientLight();
-    // scene.add(light)
+    var light = new THREE.AmbientLight();
+    scene.add(light)
     
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -59,10 +59,10 @@ function move(){
      * Rotation
      */
     if(touches.indexOf(220) >= 0){//<>
-        pers.rotate(0, 1)
+        pers.rotate(1)
     }
     if(touches.indexOf(87) >= 0){//w
-        pers.rotate(0, -1)
+        pers.rotate(-1)
     }
     if(touches.indexOf(16) >= 0){ //Shift
         if(touches.indexOf(38) >= 0){//haut
