@@ -76,13 +76,10 @@ function Init() {
     window.addEventListener('resize', onWindowResize, false);
 }
 
-function Afficher() {
-    renderer.render(scene,pers.camera);
-}
-
-function Animer() {
-    requestAnimationFrame(Animer);
-
+/**
+ * Déplacement du personnage
+ */
+function move(){
     if(touches.indexOf(38) >= 0){//haut
         pers.move(
             -Math.cos((Math.PI * 90/180) - pers.rotation.y) * pers.speedMove, 
@@ -111,14 +108,35 @@ function Animer() {
             0
         )
     }
+
+    /***
+     * Rotation
+     */
     if(touches.indexOf(220) >= 0){
-        pers.rotate(pers.speedRotate)
+        pers.rotate(0, pers.speedRotate)
     }
     if(touches.indexOf(87) >= 0){
-        pers.rotate(-pers.speedRotate)
+        pers.rotate(0, -pers.speedRotate)
     }
+    if(touches.indexOf(16) >= 0){
+        if(touches.indexOf(38) >= 0){//haut
+            pers.rotate(pers.speedRotate, 0);
+        }
+        if(touches.indexOf(40) >= 0){//bas
+            pers.rotate(-pers.speedRotate, 0);
+        }
+    }
+}
+
+function Afficher() {
+    renderer.render(scene,pers.camera);
+}
+
+function Animer() {
+    requestAnimationFrame(Animer);
+    move();
     Afficher();
-    console.log("x : " + pers.position.x + "| y : " + pers.position.y)
+    // console.log("x : " + pers.position.x + "| y : " + pers.position.y)
 }
 
 Init();
