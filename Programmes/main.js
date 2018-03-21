@@ -41,8 +41,11 @@ function Init() {
     map.add(pers)
     scene.add(map);
 
+    /**
+     * Lumière global (Pour les tests)
+     */
     var light = new THREE.AmbientLight();
-    scene.add(light)
+    // scene.add(light)
     
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
