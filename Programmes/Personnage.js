@@ -5,7 +5,7 @@ function Personnage(){
      * Position
      */
     this.rotation.x = Math.PI * 90 / 180
-    this.position.set(0, 0, -20)
+    this.position.set(0, 0, 0)
     this.speedMove = 1
     this.speedRotate = 0.09
 
@@ -21,34 +21,43 @@ function Personnage(){
      */
     this.light = new THREE.PointLight(0xF1DA00, 0.5, 30);
     this.add(this.light)
-                
-    /**
-     * move
-     */
-    this.move = function(x, y, z){
-        this.position.x += x
-        this.position.y += y
-        this.position.z += z
+
+    this.forward = function(map){
+        var position = new THREE.Vector3()
+        position.x = this.position.x - Math.cos((Math.PI * 90/180) - this.rotation.y) * this.speedMove
+        position.y = this.position.y + Math.cos(this.rotation.y) * this.speedMove
+        position.z += 0
+        if(map.isOn(position) == true){
+            this.position = position
+        }
     }
-    this.forward = function(){
-        this.position.x += -Math.cos((Math.PI * 90/180) - this.rotation.y) * this.speedMove
-        this.position.y += Math.cos(this.rotation.y) * this.speedMove
-        this.position.y += 0
+    this.backward = function(map){
+        var position = new THREE.Vector3()
+        position.x = this.position.x + Math.cos((Math.PI * 90/180) - this.rotation.y) * this.speedMove
+        position.y = this.position.y - Math.cos(this.rotation.y) * this.speedMove
+        position.z += 0
+        if(map.isOn(position) == true){
+            console.log(position)
+            this.position = position
+        }
     }
-    this.backward = function(){
-        this.position.x += Math.cos((Math.PI * 90/180) - this.rotation.y) * this.speedMove
-        this.position.y += -Math.cos(this.rotation.y) * this.speedMove
-        this.position.y += 0
+    this.leftward = function(map){
+        var position = new THREE.Vector3()
+        position.x = this.position.x - Math.cos(this.rotation.y) * this.speedMove
+        position.y = this.position.y - Math.cos((Math.PI * 90/180) - this.rotation.y) * this.speedMove
+        position.z += 0
+        if(map.isOn(position) == true){
+            this.position = position
+        }
     }
-    this.leftward = function(){
-        this.position.x += -Math.cos(this.rotation.y) * this.speedMove
-        this.position.y += -Math.cos((Math.PI * 90/180) - this.rotation.y) * this.speedMove
-        this.position.y += 0
-    }
-    this.rightward = function(){
-        this.position.x += Math.cos(this.rotation.y) * this.speedMove
-        this.position.y += Math.cos((Math.PI * 90/180) - this.rotation.y) * this.speedMove
-        this.position.y += 0
+    this.rightward = function(map){
+        var position = new THREE.Vector3()
+        position.x += this.position.x + Math.cos(this.rotation.y) * this.speedMove
+        position.y += this.position.y + Math.cos((Math.PI * 90/180) - this.rotation.y) * this.speedMove
+        position.z += 0
+        if(map.isOn(position) == true){
+            this.position = position
+        }
     }
 
     /**
