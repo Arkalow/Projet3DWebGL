@@ -1,5 +1,8 @@
 function Personnage(){
-    this.__proto__ = new THREE.Object3D
+
+    var geometry = new THREE.CubeGeometry(2,4,2)
+    var material = new THREE.MeshBasicMaterial( {color: 0x000000} );
+    this.__proto__ = new THREE.Mesh(geometry, material)
 
     /**
      * Position
@@ -22,11 +25,6 @@ function Personnage(){
      */
     this.light = new THREE.PointLight(0xF1DA00, 1, 20);
     this.add(this.light)
-
-
-    var geometry = new THREE.CubeGeometry(2,4,2)
-    var material = new THREE.MeshBasicMaterial( {color: 0x000000} );
-    this.cube = new THREE.Mesh(geometry, material)
 
     this.forward = function(map){
         var position = new THREE.Vector3()

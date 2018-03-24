@@ -1,5 +1,4 @@
 function Panel(){
-    this.__proto__ = new THREE.Object3D
 
     var x = document.createElement("canvas");
     var xc = x.getContext("2d");
@@ -20,11 +19,10 @@ function Panel(){
     });
 
     material.map.needsUpdate = true;
-    this.mesh = new THREE.Mesh(geometry, material)
-    this.mesh.rotation.x = Math.PI * 90 / 180
-    this.mesh.doubleSided = true;
-    this.mesh.position.set(0, 0, 0)
-    this.add(this.mesh);
+    this.__proto__ = new THREE.Mesh(geometry, material)
+    this.rotation.x = Math.PI * 90 / 180
+    this.doubleSided = true;
+    this.position.set(0, 0, 0)
 
     console.log(this)
 }
