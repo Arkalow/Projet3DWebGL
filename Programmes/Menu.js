@@ -1,4 +1,4 @@
-function Menu(items){
+function Menu(text){
 
     var px = 50
     var canvas = document.createElement("canvas")
@@ -13,14 +13,9 @@ function Menu(items){
 
     //Text
     contextCanvas.fillStyle = "black"
-    contextCanvas.font = px+"pt arial bold"
+    contextCanvas.font = (px*0.8)+"pt arial bold"
+    addMultiLineText(text, 0, px, px, canvas.width, contextCanvas);
     
-    for(var i = 0; i < items.length; i++){
-        console.log("dsf")
-        contextCanvas.fillText(items[i], px/10, (i+1)*px)
-    }
-
-
     var geometry = new THREE.PlaneGeometry(1, 1, 1)
 
     var material = new THREE.MeshBasicMaterial({ 

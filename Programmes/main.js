@@ -47,7 +47,7 @@ function Init() {
     var light = new THREE.AmbientLight();
     scene.add(light)
 
-    var menu = new Menu(['elem1', 'elem2', 'elem3'])
+    var menu = new Menu("私は駅に車で行く。")
     pers.add(menu)
     
     renderer = new THREE.WebGLRenderer();
