@@ -47,9 +47,4 @@ function Map(imageURL, objectURL){
     this.chests.push(new Object())
     
     this.add(this.chests[0])
-
-    
-
-
-
 }
