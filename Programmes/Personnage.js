@@ -13,7 +13,7 @@ function Personnage(){
      * Camera
      */
     this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
-    this.camera.position.y = 2
+    this.camera.position.y = 0
     this.add(this.camera)
 
     /**
@@ -85,16 +85,16 @@ function Personnage(){
     /**
      * Bras du personnage
      */
-    var geometry = new THREE.CubeGeometry(0.5,1.5,0.5)
-    var material = new THREE.MeshBasicMaterial( {clor: 0xd1d1d1} );
-    var leftArm = new THREE.Mesh(geometry, material)
-    var rightArm = new THREE.Mesh(geometry, material)
-    leftArm.position.set(-1.5, 1, -3)
-    leftArm.rotation.set(1, 1.3, 1)
-    rightArm.position.set(1.5, 1, -3)
-    rightArm.rotation.set(1, -1.3, -1)
-    this.add(leftArm);
-    this.add(rightArm);
+    // var geometry = new THREE.CubeGeometry(0.5,1.5,0.5)
+    // var material = new THREE.MeshBasicMaterial( {clor: 0xd1d1d1} );
+    // var leftArm = new THREE.Mesh(geometry, material)
+    // var rightArm = new THREE.Mesh(geometry, material)
+    // leftArm.position.set(-1.5, 0, -3)
+    // leftArm.rotation.set(1, 1.3, 1)
+    // rightArm.position.set(1.5, 1, -3)
+    // rightArm.rotation.set(1, -1.3, -1)
+    // this.add(leftArm);
+    // this.add(rightArm);
 
     console.log(this)
 }
