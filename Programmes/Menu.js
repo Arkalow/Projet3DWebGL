@@ -1,22 +1,23 @@
-function Menu(text){
+function Menu(text, height, width, resolution){
 
-    var px = 50
+    var px = resolution
     var canvas = document.createElement("canvas")
     var contextCanvas = canvas.getContext("2d")
-    canvas.width = canvas.height = 10*px
+    canvas.height = height * px
+    canvas.width = width * px
     contextCanvas.shadowColor = "#000"
     contextCanvas.shadowBlur = 7
 
     //Fond
     contextCanvas.fillStyle = '#E1E1E1';
-    contextCanvas.fillRect(0, 0, canvas.height, canvas.width);
+    contextCanvas.fillRect(0, 0, canvas.width, canvas.height);
 
     //Text
     contextCanvas.fillStyle = "black"
     contextCanvas.font = (px*0.8)+"pt arial bold"
     addMultiLineText(text, 0, px, px, canvas.width, contextCanvas);
     
-    var geometry = new THREE.PlaneGeometry(1, 1, 1)
+    var geometry = new THREE.PlaneGeometry(width/10, height/10, 1)
 
     var material = new THREE.MeshBasicMaterial({ 
         map: new THREE.Texture(canvas), 

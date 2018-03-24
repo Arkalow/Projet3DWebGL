@@ -47,7 +47,7 @@ function Init() {
     var light = new THREE.AmbientLight();
     scene.add(light)
 
-    var menu = new Menu("私は駅に車で行く。")
+    var menu = new Menu("私は駅に車で行く。jhdsfqdsfqsdf fqdsf qsdfqsd fqsddd kgkjhgkjhgkjhg", 15, 25, 30)
     pers.add(menu)
     
     renderer = new THREE.WebGLRenderer();
