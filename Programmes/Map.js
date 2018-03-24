@@ -25,8 +25,26 @@ function Map(imageURL, objectURL){
             if (child instanceof THREE.Mesh) {
                 child.material.map = texture;
             }
+            object.position.set(0, 0, 21)
         });
         self.add(object)
     });
     console.log(this)
+
+    /**
+     * Détecte si la position passé en paramètre est dans la map
+     * @param {*} position 
+     */
+    this.isOn = function(position){
+        if(position.x <= 4.5 && position.x >= -4.5 && position.y <= 10 && position.y >= -10){
+            return true
+        }
+        return false
+    }
+
+
+    this.chests = new Array()
+    this.chests.push(new Object())
+    
+    this.add(this.chests[0])
 }

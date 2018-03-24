@@ -41,7 +41,10 @@ function Init() {
     map.add(pers)
     scene.add(map);
 
-    // var light = new THREE.AmbientLight();
+    /**
+     * Lumière global (Pour les tests)
+     */
+    var light = new THREE.AmbientLight();
     // scene.add(light)
     
     renderer = new THREE.WebGLRenderer();
@@ -54,36 +57,33 @@ function Init() {
  * Déplacement du personnage
  */
 function move(){
-
-    /***
-     * Rotation
-     */
     if(touches.indexOf(220) >= 0){//<>
-        pers.rotate(0, 1)
+        pers.rotate(1)
     }
     if(touches.indexOf(87) >= 0){//w
-        pers.rotate(0, -1)
+        pers.rotate(-1)
     }
     if(touches.indexOf(16) >= 0){ //Shift
+        console.log("x : " + pers.position.x + "| y : " + pers.position.y)
         if(touches.indexOf(38) >= 0){//haut
-            pers.rotate(1, 0);
+            pers.headUp();
         }
         if(touches.indexOf(40) >= 0){//bas
-            pers.rotate(-1, 0);
+            pers.headDown();
         }
     }else{ //pas shift
         if(touches.indexOf(38) >= 0){//haut
-            pers.forward()
+            pers.forward(map)
         }
         if(touches.indexOf(40) >= 0){//bas
-            pers.backward()
+            pers.backward(map)
         }
     }
     if(touches.indexOf(37) >= 0){//gauche
-        pers.leftward()
+        pers.leftward(map)
     }
     if(touches.indexOf(39) >= 0){//droite
-        pers.rightward()
+        pers.rightward(map)
     }
 }
 
@@ -95,7 +95,6 @@ function Animer() {
     requestAnimationFrame(Animer);
     move();
     Afficher();
-    // console.log("x : " + pers.position.x + "| y : " + pers.position.y)
 }
 
 Init();
