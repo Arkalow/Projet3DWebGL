@@ -48,5 +48,5 @@ function Map(imageURL, objectURL){
     
     // this.add(this.chests[0])
 
-    this.add(new Panel())
+    // this.add(new Panel())
 }

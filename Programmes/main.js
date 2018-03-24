@@ -45,7 +45,10 @@ function Init() {
      * Lumière global (Pour les tests)
      */
     var light = new THREE.AmbientLight();
-    // scene.add(light)
+    scene.add(light)
+
+    var menu = new Menu(['elem1', 'elem2', 'elem3'])
+    pers.add(menu)
     
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
