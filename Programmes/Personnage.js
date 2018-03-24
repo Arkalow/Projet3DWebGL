@@ -1,5 +1,8 @@
 function Personnage(){
-    this.__proto__ = new THREE.Object3D
+
+    var geometry = new THREE.CubeGeometry(2,4,2)
+    var material = new THREE.MeshBasicMaterial( {color: 0x000000} );
+    this.__proto__ = new THREE.Mesh(geometry, material)
 
     /**
      * Position
@@ -13,7 +16,7 @@ function Personnage(){
      * Camera
      */
     this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
-    this.camera.position.y = 2
+    this.camera.position.y = 0
     this.add(this.camera)
 
     /**
@@ -22,11 +25,6 @@ function Personnage(){
      */
     this.light = new THREE.PointLight(0xF1DA00, 1, 20);
     this.add(this.light)
-
-
-    var geometry = new THREE.CubeGeometry(2,4,2)
-    var material = new THREE.MeshBasicMaterial( {color: 0x000000} );
-    this.cube = new THREE.Mesh(geometry, material)
 
     this.forward = function(map){
         var position = new THREE.Vector3()
@@ -85,16 +83,16 @@ function Personnage(){
     /**
      * Bras du personnage
      */
-    var geometry = new THREE.CubeGeometry(0.5,1.5,0.5)
-    var material = new THREE.MeshBasicMaterial( {clor: 0xd1d1d1} );
-    var leftArm = new THREE.Mesh(geometry, material)
-    var rightArm = new THREE.Mesh(geometry, material)
-    leftArm.position.set(-1.5, 1, -3)
-    leftArm.rotation.set(1, 1.3, 1)
-    rightArm.position.set(1.5, 1, -3)
-    rightArm.rotation.set(1, -1.3, -1)
-    this.add(leftArm);
-    this.add(rightArm);
+    // var geometry = new THREE.CubeGeometry(0.5,1.5,0.5)
+    // var material = new THREE.MeshBasicMaterial( {clor: 0xd1d1d1} );
+    // var leftArm = new THREE.Mesh(geometry, material)
+    // var rightArm = new THREE.Mesh(geometry, material)
+    // leftArm.position.set(-1.5, 0, -3)
+    // leftArm.rotation.set(1, 1.3, 1)
+    // rightArm.position.set(1.5, 1, -3)
+    // rightArm.rotation.set(1, -1.3, -1)
+    // this.add(leftArm);
+    // this.add(rightArm);
 
     console.log(this)
 }
