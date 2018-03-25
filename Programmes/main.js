@@ -86,7 +86,11 @@ function move(){
         pers.rightward(map)
     }
     if(touches.indexOf(13) >= 0){//Enter
-        pers.menu.visible = false
+        if(pers.menu.visible){
+            pers.menu.visible = false
+        }else{
+            pers.menu.visible = true
+        }
     }
 }
 
