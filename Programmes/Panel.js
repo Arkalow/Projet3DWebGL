@@ -32,7 +32,6 @@ function Panel(text, height, width, resolution){
         //side : THREE.DoubleSide
     })
     this.setText(text)
-    material.map.needsUpdate = true
     this.__proto__ = new THREE.Mesh(geometry, material)
     this.doubleSided = true
     this.position.set(0, 0, 0)

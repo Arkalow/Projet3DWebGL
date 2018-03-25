@@ -3,7 +3,7 @@ var scene, renderer;
 var dax=0.002;
 var pers = new Personnage();
 var map = new Map('../TranseptSud/TranseptTexture4096.jpg', '../TranseptSud/transeptSudBox.obj');
-
+var balises = new Array()
 var touches = []
 // Gestion du clavier
 window.onkeydown = function(event) {
@@ -44,13 +44,21 @@ function Init() {
     /**
      * Lumière global (Pour les tests)
      */
-    // var light = new THREE.AmbientLight();
-    // scene.add(light)
+    var light = new THREE.AmbientLight();
+    scene.add(light)
     
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
     window.addEventListener('resize', onWindowResize, false);
+
+    var balise = new Balise(2.9, 2)
+    balise.position.x = 5.8
+    balise.position.y = 20.3
+    balises.push(balise)
+    balises.forEach(balise => {
+        map.add(balise)
+    });
 }
 
 /**
@@ -92,13 +100,21 @@ function move(){
     }
 }
 
+function collision(){
+    balises.forEach(balise => {
+        console.log(balise.isCollision(pers.position))
+    });
+}
 function Afficher() {
     renderer.render(scene,pers.camera);
 }
 
 function Animer() {
     requestAnimationFrame(Animer);
-    move();
+    if(touches.length > 0){
+        move();
+        collision();
+    }
     Afficher();
 }
 
