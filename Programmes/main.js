@@ -5,13 +5,17 @@ var pers = new Personnage();
 var map = new Map('../TranseptSud/TranseptTexture4096.jpg', '../TranseptSud/transeptSudBox.obj');
 var balises = new Array()
 var touches = []
+var input = undefined
 // Gestion du clavier
 window.onkeydown = function(event) {
     var e = event || window.event;
     var key = e.which || e.keyCode;
 
-    if(touches.indexOf(key)<0) {
+    if(touches.indexOf(key) < 0) {
         touches.push(key);
+    }
+    if(input != undefined){
+        input += event.key
     }
 }
 window.onkeyup = function(event) {
@@ -44,16 +48,16 @@ function Init() {
     /**
      * Lumière global (Pour les tests)
      */
-    var light = new THREE.AmbientLight();
-    scene.add(light)
+    // var light = new THREE.AmbientLight();
+    // scene.add(light)
     
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
     window.addEventListener('resize', onWindowResize, false);
 
-    var balise = new Balise(2.9, 2)
-    balise.position.x = 5.8
+    var balise = new Balise(7, 4)
+    balise.position.x = 4.9
     balise.position.y = 20.3
     balises.push(balise)
     balises.forEach(balise => {
@@ -93,17 +97,17 @@ function move(){
     if(touches.indexOf(39) >= 0){//droite
         pers.rightward(map)
     }
-    if(touches.indexOf(13) >= 0){//Enter
-        if(pers.menu.visible){
-            pers.menu.visible = false
-        }
-    }
 }
 
 function collision(){
     balises.forEach(balise => {
-        console.log(balise.isCollision(pers.position))
-    });
+        if(balise.isCollision(pers.position) == true){ //Si le joueur est sur une balise
+            if(pers.enable == true){
+                pers.enable = false
+                pers.menu.visible = true
+            }
+        }
+    })
 }
 function Afficher() {
     renderer.render(scene,pers.camera);
@@ -112,8 +116,17 @@ function Afficher() {
 function Animer() {
     requestAnimationFrame(Animer);
     if(touches.length > 0){
-        move();
-        collision();
+        if(pers.enable == true){
+            move()
+        }
+        collision()
+
+        if(touches.indexOf(13) >= 0){//Enter
+            if(pers.menu.visible){
+                pers.menu.visible = false
+                pers.enable = true
+            }
+        }
     }
     Afficher();
 }
