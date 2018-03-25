@@ -42,6 +42,4 @@ function Map(imageURL, objectURL){
         }
         return true
     }
-    this.balise = new Balise()
-    this.add(this.balise)
 }
