@@ -1,28 +1,41 @@
-function Panel(){
+function Panel(text, height, width, resolution){
+    
+    this.px = resolution
+    this.canvas = document.createElement("canvas")
+    this.contextCanvas = this.canvas.getContext("2d")
+    this.canvas.height = height * this.px
+    this.canvas.width = width * this.px
+    this.contextCanvas.shadowColor = "#000"
+    this.contextCanvas.shadowBlur = 7
+    this.background =  '#E1E1E1'
+    this.color = 'black'
+    
 
-    var canvas = document.createElement("canvas");
-    var contextCanvas = canvas.getContext("2d");
-    canvas.width = canvas.height = 128;
-    contextCanvas.shadowColor = "#000";
-    contextCanvas.shadowBlur = 7;
-    contextCanvas.fillStyle = "white";
-    contextCanvas.font = "30pt arial bold";
-    contextCanvas.fillText('Test', 10, 64);
+    this.setText = function(text){
+        //Fond
+        this.contextCanvas.fillStyle = this.background
+        this.contextCanvas.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-    var geometry = new THREE.PlaneGeometry(5, 5, 1)
+        //Text
+        this.contextCanvas.fillStyle = this.color
+        this.contextCanvas.font = (this.px*0.8)+"pt arial bold"
 
+        material.map.needsUpdate = true
+        addMultiLineText(text, this.px, this.px, this.px, this.canvas.width, this.contextCanvas);
+    }
+    
+    var geometry = new THREE.PlaneGeometry(width/10, height/10, 1)
     var material = new THREE.MeshBasicMaterial({ 
-        map: new THREE.Texture(canvas), 
-        transparent: true,
+        map: new THREE.Texture(this.canvas), 
+        transparent: false,
         //color: 0x00FF00,
-        side : THREE.DoubleSide
-    });
-
-    material.map.needsUpdate = true;
+        //side : THREE.DoubleSide
+    })
+    this.setText(text)
+    material.map.needsUpdate = true
     this.__proto__ = new THREE.Mesh(geometry, material)
-    this.rotation.canvas = Math.PI * 90 / 180
-    this.doubleSided = true;
+    this.doubleSided = true
     this.position.set(0, 0, 0)
-
+    
     console.log(this)
 }

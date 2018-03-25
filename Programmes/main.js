@@ -44,11 +44,12 @@ function Init() {
     /**
      * Lumière global (Pour les tests)
      */
-    var light = new THREE.AmbientLight();
-    scene.add(light)
+    // var light = new THREE.AmbientLight();
+    // scene.add(light)
 
-    var menu = new Menu("私は駅に車で行く。jhdsfqdsfqsdf fqdsf qsdfqsd fqsddd kgkjhgkjhgkjhg", 15, 25, 30)
-    pers.add(menu)
+    pers.menu = new Panel("私は駅に車で行く。jhdsfqdsfqsdf fqdsf qsdfqsd fqsddd kgkjhgkjhgkjhg", 10, 20, 30)
+    pers.menu.position.z = -2
+    pers.add(pers.menu)
     
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -87,6 +88,9 @@ function move(){
     }
     if(touches.indexOf(39) >= 0){//droite
         pers.rightward(map)
+    }
+    if(touches.indexOf(13) >= 0){//Enter
+        pers.menu.setText("Bonjour")
     }
 }
 
