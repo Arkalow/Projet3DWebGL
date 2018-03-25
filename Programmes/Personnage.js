@@ -15,7 +15,7 @@ function Personnage(){
      * Camera
      */
     this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
-    this.camera.position.y = 0
+    this.camera.position.y = 1
     this.add(this.camera)
 
     /**
