@@ -94,5 +94,14 @@ function Personnage(){
     // this.add(leftArm);
     // this.add(rightArm);
 
+
+    /**
+     * Paneau lié au personnage
+     */
+    this.menu = new Panel("私は駅に車で行く。", 10, 20, 30)
+    this.menu.position.z = -2
+    this.menu.visible = false
+    this.add(this.menu)
+
     console.log(this)
 }
