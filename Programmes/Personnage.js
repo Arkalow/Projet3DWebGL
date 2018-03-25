@@ -1,5 +1,6 @@
 function Personnage(){
 
+    this.enable = true
     var geometry = new THREE.CubeGeometry(2,4,2)
     var material = new THREE.MeshBasicMaterial( {color: 0x000000} );
     this.__proto__ = new THREE.Mesh(geometry, material)
@@ -97,8 +98,9 @@ function Personnage(){
     /**
      * Paneau lié au personnage
      */
-    this.menu = new Panel("私は駅に車で行く。", 10, 20, 30)
-    this.menu.position.z = -2
+    this.menu = new Panel("私は駅に車で行。", 6, 10, 50, 0.4)
+    this.menu.position.z = -1
+    this.menu.position.y = 1
     this.menu.visible = false
     this.add(this.menu)
 
