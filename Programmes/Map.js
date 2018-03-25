@@ -41,12 +41,4 @@ function Map(imageURL, objectURL){
         }
         return true
     }
-
-
-    // this.chests = new Array()
-    // this.chests.push(new Object())
-    
-    // this.add(this.chests[0])
-
-    this.add(new Panel())
 }

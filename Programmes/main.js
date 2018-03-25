@@ -44,7 +44,7 @@ function Init() {
     /**
      * Lumière global (Pour les tests)
      */
-    var light = new THREE.AmbientLight();
+    // var light = new THREE.AmbientLight();
     // scene.add(light)
     
     renderer = new THREE.WebGLRenderer();
@@ -84,6 +84,11 @@ function move(){
     }
     if(touches.indexOf(39) >= 0){//droite
         pers.rightward(map)
+    }
+    if(touches.indexOf(13) >= 0){//Enter
+        if(pers.menu.visible){
+            pers.menu.visible = false
+        }
     }
 }
 

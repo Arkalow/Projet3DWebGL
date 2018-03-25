@@ -3,7 +3,6 @@ function Personnage(){
     var geometry = new THREE.CubeGeometry(2,4,2)
     var material = new THREE.MeshBasicMaterial( {color: 0x000000} );
     this.__proto__ = new THREE.Mesh(geometry, material)
-
     /**
      * Position
      */
@@ -87,12 +86,21 @@ function Personnage(){
     // var material = new THREE.MeshBasicMaterial( {clor: 0xd1d1d1} );
     // var leftArm = new THREE.Mesh(geometry, material)
     // var rightArm = new THREE.Mesh(geometry, material)
-    // leftArm.position.set(-1.5, 0, -3)
+    // leftArm.position.set(-1.5, -0.5, -2)
     // leftArm.rotation.set(1, 1.3, 1)
-    // rightArm.position.set(1.5, 1, -3)
+    // rightArm.position.set(1.5, -0.5, -2)
     // rightArm.rotation.set(1, -1.3, -1)
     // this.add(leftArm);
     // this.add(rightArm);
+
+
+    /**
+     * Paneau lié au personnage
+     */
+    this.menu = new Panel("私は駅に車で行く。", 10, 20, 30)
+    this.menu.position.z = -2
+    this.menu.visible = false
+    this.add(this.menu)
 
     console.log(this)
 }
