@@ -88,8 +88,6 @@ function move(){
     if(touches.indexOf(13) >= 0){//Enter
         if(pers.menu.visible){
             pers.menu.visible = false
-        }else{
-            pers.menu.visible = true
         }
     }
 }
