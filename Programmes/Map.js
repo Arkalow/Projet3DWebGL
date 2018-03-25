@@ -25,7 +25,8 @@ function Map(imageURL, objectURL){
             if (child instanceof THREE.Mesh) {
                 child.material.map = texture;
             }
-            object.position.set(0, 0, 20)
+            object.position.set(4.5, -10, 20)
+            object.position.y += 20
         });
         self.add(object)
     });
@@ -41,6 +42,5 @@ function Map(imageURL, objectURL){
         }
         return true
     }
-    
-    this.add(new Balise())
+    this.add(this.balise)
 }

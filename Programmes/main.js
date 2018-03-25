@@ -44,8 +44,8 @@ function Init() {
     /**
      * Lumière global (Pour les tests)
      */
-    // var light = new THREE.AmbientLight();
-    // scene.add(light)
+    var light = new THREE.AmbientLight();
+    scene.add(light)
     
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
