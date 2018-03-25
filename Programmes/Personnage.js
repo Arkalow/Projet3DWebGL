@@ -87,9 +87,9 @@ function Personnage(){
     // var material = new THREE.MeshBasicMaterial( {clor: 0xd1d1d1} );
     // var leftArm = new THREE.Mesh(geometry, material)
     // var rightArm = new THREE.Mesh(geometry, material)
-    // leftArm.position.set(-1.5, 0, -3)
+    // leftArm.position.set(-1.5, -0.5, -2)
     // leftArm.rotation.set(1, 1.3, 1)
-    // rightArm.position.set(1.5, 1, -3)
+    // rightArm.position.set(1.5, -0.5, -2)
     // rightArm.rotation.set(1, -1.3, -1)
     // this.add(leftArm);
     // this.add(rightArm);
