@@ -66,6 +66,20 @@ function Init() {
 
 
     
+    /**
+     * Indices
+     */
+    var indices = new Array()
+    indices.push(new Panel("wcvxwcv dfsdf sdf sdf sdf sdf sdf xcvxcvv sddf sdqsd", 20, 30, 50, 2))
+    indices[0].transparent = true
+    indices[0].rotation.x = Math.PI * 90 / 180
+    indices[0].rotation.y = Math.PI * 90 / 180
+    indices[0].translateX(11)
+    indices[0].translateY(4)
+    indices[0].translateZ(-1)
+    indices.forEach(indice => {
+        map.add(indice)
+    });
 }
 
 /**

@@ -40,6 +40,6 @@ function Map(imageURL, objectURL){
         if(position.x <= 9 && position.x >= 0 && position.y <= 20 && position.y >= 0){
             return true
         }
-        return false
+        return true
     }
 }

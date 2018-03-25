@@ -98,7 +98,7 @@ function Personnage(){
     /**
      * Paneau lié au personnage
      */
-    this.menu = new Panel("私は駅に車で行。", 5, 10, 50, 0.4)
+    this.menu = new Panel("私は駅に車で行。", 6, 10, 50, 0.4)
     this.menu.position.z = -1
     this.menu.position.y = 1
     this.menu.visible = false
