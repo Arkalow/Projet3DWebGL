@@ -1,5 +1,6 @@
-function Panel(text, height, width, resolution){
+function Panel(text, height, width, resolution, police){
     
+    this.police = police
     this.px = resolution
     this.canvas = document.createElement("canvas")
     this.contextCanvas = this.canvas.getContext("2d")
@@ -18,7 +19,7 @@ function Panel(text, height, width, resolution){
 
         //Text
         this.contextCanvas.fillStyle = this.color
-        this.contextCanvas.font = (this.px*0.4)+"pt arial bold"
+        this.contextCanvas.font = (this.px*this.police)+"pt arial bold"
 
         material.map.needsUpdate = true
         addMultiLineText(text, this.px, this.px, this.px, this.canvas.width, this.contextCanvas);
