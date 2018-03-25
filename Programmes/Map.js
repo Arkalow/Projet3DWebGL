@@ -41,4 +41,6 @@ function Map(imageURL, objectURL){
         }
         return true
     }
+    
+    this.add(new Balise())
 }
