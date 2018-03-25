@@ -1,5 +1,6 @@
-function Panel(text, height, width, resolution){
+function Panel(text, height, width, resolution, police){
     
+    this.police = police
     this.px = resolution
     this.canvas = document.createElement("canvas")
     this.contextCanvas = this.canvas.getContext("2d")
@@ -7,7 +8,7 @@ function Panel(text, height, width, resolution){
     this.canvas.width = width * this.px
     this.contextCanvas.shadowColor = "#000"
     this.contextCanvas.shadowBlur = 7
-    this.background =  '#E1E1E1'
+    this.background =  '#252000'
     this.color = 'black'
     
 
@@ -18,10 +19,10 @@ function Panel(text, height, width, resolution){
 
         //Text
         this.contextCanvas.fillStyle = this.color
-        this.contextCanvas.font = (this.px*0.8)+"pt arial bold"
+        this.contextCanvas.font = (this.px*this.police)+"pt arial bold"
 
         material.map.needsUpdate = true
-        addMultiLineText(text, this.px, this.px, this.px, this.canvas.width, this.contextCanvas);
+        addMultiLineText("\n"+text, this.px*this.police, this.px*this.police, this.px*this.police, this.canvas.width - this.px*this.police, this.contextCanvas);
     }
     
     var geometry = new THREE.PlaneGeometry(width/10, height/10, 1)
