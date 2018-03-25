@@ -63,6 +63,9 @@ function Init() {
     balises.forEach(balise => {
         map.add(balise)
     });
+
+
+    
 }
 
 /**

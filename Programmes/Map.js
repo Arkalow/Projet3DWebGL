@@ -37,9 +37,9 @@ function Map(imageURL, objectURL){
      * @param {*} position 
      */
     this.isOn = function(position){
-        if(position.x <= 4.5 && position.x >= -4.5 && position.y <= 10 && position.y >= -10){
+        if(position.x <= 9 && position.x >= 0 && position.y <= 20 && position.y >= 0){
             return true
         }
-        return true
+        return false
     }
 }

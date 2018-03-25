@@ -18,7 +18,7 @@ function Panel(text, height, width, resolution){
 
         //Text
         this.contextCanvas.fillStyle = this.color
-        this.contextCanvas.font = (this.px*0.8)+"pt arial bold"
+        this.contextCanvas.font = (this.px*0.4)+"pt arial bold"
 
         material.map.needsUpdate = true
         addMultiLineText(text, this.px, this.px, this.px, this.canvas.width, this.contextCanvas);
