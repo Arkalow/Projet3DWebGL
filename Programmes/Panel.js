@@ -10,7 +10,7 @@ function Panel(text, height, width, resolution, police){
     this.contextCanvas.shadowBlur = 7
     this.background =  '#252000'
     this.color = 'black'
-    
+    this.text = text
 
     this.setText = function(text){
         //Fond
@@ -37,5 +37,4 @@ function Panel(text, height, width, resolution, police){
     this.doubleSided = true
     this.position.set(0, 0, 0)
     
-    console.log(this)
 }

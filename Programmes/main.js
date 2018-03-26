@@ -5,7 +5,7 @@ var pers = new Personnage();
 var map = new Map('../TranseptSud/TranseptTexture4096.jpg', '../TranseptSud/transeptSudBox.obj');
 var balises = new Array()
 var touches = []
-var input = undefined
+var input = ""
 // Gestion du clavier
 window.onkeydown = function(event) {
     var e = event || window.event;
@@ -14,9 +14,12 @@ window.onkeydown = function(event) {
     if(touches.indexOf(key) < 0) {
         touches.push(key);
     }
-    if(input != undefined){
-        input += event.key
+    if(e.keyCode < 91 && e.keyCode > 65 || e.keyCode == 32){
+        if(input == ""){
+            input = event.key
+        }
     }
+    console.log(e.keyCode)
 }
 window.onkeyup = function(event) {
     var e = event || window.event;
@@ -129,6 +132,17 @@ function Animer() {
                 pers.menu.visible = false
                 pers.enable = true
             }
+        }else if(touches.indexOf(8) >= 0){
+            if(pers.menu.text.length > 0){
+                pers.menu.text = pers.menu.text.substring(0, pers.menu.text.length-1)
+                pers.menu.setText(pers.menu.text)
+            }
+        }else{
+            if(input != ""){
+                pers.menu.text += input
+                input = ""
+            }else
+            pers.menu.setText(pers.menu.text)
         }
     }
     Afficher();

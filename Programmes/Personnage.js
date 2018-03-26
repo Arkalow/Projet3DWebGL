@@ -102,6 +102,7 @@ function Personnage(){
     this.menu.position.z = -1
     this.menu.position.y = 1
     this.menu.visible = false
+    console.log("menu")
     this.add(this.menu)
 
     console.log(this)
