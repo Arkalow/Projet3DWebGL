@@ -14,6 +14,7 @@ var music = document.getElementById("music");
 var songInterupteur = document.getElementById("songInterupteur")
 var songPied = document.getElementById("songPied")
 var faux = document.getElementById("faux")
+var hourra = document.getElementById("hourra")
 
 // Gestion du clavier
 window.onkeydown = function(event) {
@@ -28,7 +29,7 @@ window.onkeydown = function(event) {
             input = event.key
         }
     }
-    console.log(e.keyCode)
+    //console.log(e.keyCode)
 }
 window.onkeyup = function(event) {
     var e = event || window.event;
@@ -56,7 +57,7 @@ function Init() {
     scene = new THREE.Scene();
     map.add(pers)
     scene.add(map);
-
+    
     /**
      * Lumière global (Pour les tests)
      */
@@ -181,9 +182,8 @@ function Animer() {
 }
 
 function win(){
-    music.pause()
-    var hourra = document.getElementById("hourra")
     hourra.play()
+    music.pause()
     alert("Excellent !")
     alert("Tu as gagné !")
     alert("Allez tu payes ton coup")
