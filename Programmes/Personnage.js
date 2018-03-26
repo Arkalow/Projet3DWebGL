@@ -9,7 +9,7 @@ function Personnage(){
      */
     this.rotation.x = Math.PI * 90 / 180
     this.position.set(0, 0, 0)
-    this.speedMove = 1
+    this.speedMove = 0.3
     this.speedRotate = 0.09
 
     /**
