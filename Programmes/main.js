@@ -170,13 +170,13 @@ function Animer() {
             pers.menu.setText(pers.menu.text)
         }
     }
-    Afficher(pers.camera);
-    requestAnimationFrame(Animer);
+    Afficher(pers.camera)
+    requestAnimationFrame(Animer)
 }
 
 function win(){
     alert("Excellent !")
-    document.location.reload(true);
+    document.location.reload(true)
 }
 
 Init();
