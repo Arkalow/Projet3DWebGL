@@ -77,7 +77,7 @@ function Init() {
         map.add(balise)
     });
     music.play()
-    pers.menu.setText("Bienvenue dans ce jeu \n\n Le but est de résoudre l'enigme disposible dans le carré jaune.\n\n Pour cela déplacez vous avec les flêches directionnelles et pour pivoter, appuyez simulanément CTRL + FLECHE. \n\nPour résoudre l'énigme, aidez-vous des indices \"camouflé\" dans la pièce \n\nがんばって　!")
+    pers.menu.setText("Bienvenue dans ce jeu \n\n Le but est de résoudre l'enigme disposible dans le carré jaune.\n\n Pour cela déplacez vous avec les flêches directionnelles et pour pivoter, appuyez simulanément MAJ + FLECHE. \n\nPour résoudre l'énigme, aidez-vous des indices \"camouflé\" dans la pièce \n\nがんばって !  (press enter to continue)")
     pers.menu.visible = true
 }
 
