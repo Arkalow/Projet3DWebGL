@@ -14,9 +14,6 @@ var music = document.getElementById("music");
 var songInterupteur = document.getElementById("songInterupteur")
 var songPied = document.getElementById("songPied")
 var faux = document.getElementById("faux")
-var hourra = document.getElementById("hourra")
-hourra.play()
-hourra.pause()
 
 // Gestion du clavier
 window.onkeydown = function(event) {
@@ -26,7 +23,7 @@ window.onkeydown = function(event) {
     if(touches.indexOf(key) < 0) {
         touches.push(key);
     }
-    if(e.keyCode < 91 && e.keyCode > 65 || e.keyCode == 32){
+    if(e.keyCode < 91 && e.keyCode >= 65 || e.keyCode == 32){
         if(input == ""){
             input = event.key
         }
@@ -185,6 +182,7 @@ function Animer() {
 
 function win(){
     music.pause()
+    var hourra = document.getElementById("hourra")
     hourra.play()
     alert("Excellent !")
     alert("Tu as gagné !")
