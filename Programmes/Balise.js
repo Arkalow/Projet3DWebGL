@@ -1,4 +1,5 @@
-function Balise(tailleX, tailleY){
+function Balise(tailleX, tailleY, text){
+    this.text = text
     this.tailleX = tailleX
     this.tailleY = tailleY
     var geometry = new THREE.CubeGeometry(this.tailleX,this.tailleY , 0.01)

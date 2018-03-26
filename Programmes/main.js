@@ -5,7 +5,7 @@ var pers = new Personnage();
 var map = new Map('../TranseptSud/TranseptTexture4096.jpg', '../TranseptSud/transeptSudBox.obj');
 var balises = new Array()
 var touches = []
-var input = undefined
+var input = ""
 // Gestion du clavier
 window.onkeydown = function(event) {
     var e = event || window.event;
@@ -14,9 +14,12 @@ window.onkeydown = function(event) {
     if(touches.indexOf(key) < 0) {
         touches.push(key);
     }
-    if(input != undefined){
-        input += event.key
+    if(e.keyCode < 91 && e.keyCode > 65 || e.keyCode == 32){
+        if(input == ""){
+            input = event.key
+        }
     }
+    console.log(e.keyCode)
 }
 window.onkeyup = function(event) {
     var e = event || window.event;
@@ -56,87 +59,12 @@ function Init() {
     container.appendChild(renderer.domElement);
     window.addEventListener('resize', onWindowResize, false);
 
-    var balise = new Balise(7, 4)
+    var balise = new Balise(7, 5, "君はベッドの中で寝る\n\n Où es tu ?\n\n=>")
     balise.position.x = 4.9
     balise.position.y = 20.3
     balises.push(balise)
     balises.forEach(balise => {
         map.add(balise)
-    });
-
-
-    
-    /**
-     * Indices
-     */
-    var indices = new Array()
-
-    //Indice 1
-    indices.push(new Panel("wcvxwcv dfsdf sdf sdf sdf sdf sdf xcvxcvv sddf sdqsd", 20, 30, 50, 2))
-    indices[0].transparent = true
-    indices[0].rotation.x = Math.PI * 90 / 180
-    indices[0].rotation.y = Math.PI * 90 / 180
-    indices[0].translateX(11)
-    indices[0].translateY(4)
-    indices[0].translateZ(-1.2)
-
-    //Indice 2
-    indices.push(new Panel("wcvxwcv dfsdf sdf sdf sdf sdf sdf xcvxcvv sddf sdqsd", 20, 30, 50, 2))
-    indices[1].transparent = true
-    indices[1].rotation.x = Math.PI * 90 / 180
-    indices[1].rotation.y = Math.PI * 90 / 180
-    indices[1].translateX(10)
-    indices[1].translateY(8)
-    indices[1].translateZ(-1.2)
-
-    //Indice 3
-    indices.push(new Panel("wcvxwcv dfsdf sdf sdf sdf sdf sdf xcvxcvv sddf sdqsd", 20, 30, 50, 2))
-    indices[2].transparent = true
-    indices[2].rotation.x = Math.PI * 90 / 180
-    indices[2].rotation.y = Math.PI * 90 / 180
-    indices[2].translateX(3.5)
-    indices[2].translateY(8)
-    indices[2].translateZ(-1.2)
-
-    //Indice 4
-    indices.push(new Panel("wcvxwcv dfsdf sdf sdf sdf sdf sdf xcvxcvv sddf sdqsd", 22, 19, 50, 2))
-    indices[3].transparent = true
-    indices[3].rotation.x = Math.PI * 90 / 180
-    indices[3].rotation.y = Math.PI * 90 / 180
-    indices[3].translateX(7.4)
-    indices[3].translateY(2.5)
-    indices[3].translateZ(-1.2)
-
-    //Indice 5
-    indices.push(new Panel("wcvxwcv dfsdf sdf sdf sdf sdf sdf xcvxcvv sddf sdqsd", 40, 50, 50, 2))
-    indices[4].transparent = true
-    indices[4].rotation.x = Math.PI * 90 / 180
-    indices[4].rotation.y = Math.PI * -90 / 180
-    indices[4].translateX(-11.2)
-    indices[4].translateY(5)
-    indices[4].translateZ(-10.6)
-
-    //Indice 6
-    indices.push(new Panel("wcvxwcv dfsdf sdf sdf sdf sdf sdf xcvxcvv sddf sdqsd", 40, 48, 50, 2))
-    indices[5].transparent = true
-    indices[5].rotation.x = Math.PI * 90 / 180
-    indices[5].rotation.y = Math.PI * -90 / 180
-    indices[5].translateX(-3.1)
-    indices[5].translateY(5)
-    indices[5].translateZ(-10.6)
-    
-
-
-
-
-
-
-
-
-
-
-    indices.forEach(indice => {
-        map.add(indice)
     });
 }
 
@@ -177,10 +105,14 @@ function move(){
 function collision(){
     balises.forEach(balise => {
         if(balise.isCollision(pers.position) == true){ //Si le joueur est sur une balise
-            if(pers.enable == true){
+            if(pers.enable == true && balise.actif == false){
                 pers.enable = false
                 pers.menu.visible = true
+                balise.actif = true
+                pers.menu.text = balise.text
             }
+        }else{
+            balise.actif = false
         }
     })
 }
@@ -190,17 +122,28 @@ function Afficher() {
 
 function Animer() {
     requestAnimationFrame(Animer);
-    if(touches.length > 0){
-        if(pers.enable == true){
+    if(pers.enable == true){
+        if(touches.length > 0){
             move()
+            collision()
         }
-        collision()
-
+    }else{
         if(touches.indexOf(13) >= 0){//Enter
             if(pers.menu.visible){
                 pers.menu.visible = false
                 pers.enable = true
             }
+        }else if(touches.indexOf(8) >= 0){
+            if(pers.menu.text.length > 0){
+                pers.menu.text = pers.menu.text.substring(0, pers.menu.text.length-1)
+                pers.menu.setText(pers.menu.text)
+            }
+        }else{
+            if(input != ""){
+                pers.menu.text += input
+                input = ""
+            }else
+            pers.menu.setText(pers.menu.text)
         }
     }
     Afficher();
