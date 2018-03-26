@@ -77,6 +77,8 @@ function Init() {
         map.add(balise)
     });
     music.play()
+    pers.menu.setText("Bienvenue dans ce jeu \n\n Le but est de résoudre l'enigme disposible dans le carré jaune.\n\n Pour cela déplacez vous avec les flêches directionnelles et pour pivoter, appuyez simulanément CTRL + FLECHE. \n\nPour résoudre l'énigme, aidez-vous des indices \"camouflé\" dans la pièce \n\nがんばって　!")
+    pers.menu.visible = true
 }
 
 /**
@@ -124,7 +126,11 @@ function move(){
     }else{
         songPied.pause()
     }
-    console.log(touches)
+
+
+    if(touches.indexOf(13) >= 0){//Enter
+        pers.menu.visible = false
+    }
 }
 
 function collision(){
@@ -177,8 +183,9 @@ function Animer() {
             if(input != ""){
                 pers.menu.text += input
                 input = ""
-            }else
-            pers.menu.setText(pers.menu.text)
+            }else{
+                pers.menu.setText(pers.menu.text)
+            }
         }
     }
     Afficher(pers.camera)
