@@ -7,6 +7,7 @@ var balises = new Array()
 var touches = []
 var input = ""
 var music = document.getElementById("music");
+var songInterupteur = document.getElementById("songInterupteur")
 // Gestion du clavier
 window.onkeydown = function(event) {
     var e = event || window.event;
@@ -112,6 +113,7 @@ function collision(){
                 pers.menu.visible = true
                 balise.actif = true
                 pers.menu.text = balise.text
+                songInterupteur.play()
             }
         }else{
             balise.actif = false
