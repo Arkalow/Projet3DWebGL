@@ -63,7 +63,7 @@ function Init() {
     container.appendChild(renderer.domElement);
     window.addEventListener('resize', onWindowResize, false);
 
-    var balise = new Balise(7, 5, "君はベッドの中で寝る\n\n Où es tu ?\n\n=>")
+    var balise = new Balise(7, 5, "君はベッドの中で寝る\n\n D'après cette phrase en japonais, où es tu ?\n\n (Appuie sur enter pour valider) \n\n\n=>")
     balise.position.x = 4.9
     balise.position.y = 20.3
     balises.push(balise)
@@ -77,6 +77,8 @@ function Init() {
  * Déplacement du personnage
  */
 function move(){
+    var deplacement = false//pour savoir quand le personnage translate
+
     if(touches.indexOf(220) >= 0){//<>
         pers.rotate(1)
     }
@@ -84,7 +86,6 @@ function move(){
         pers.rotate(-1)
     }
     if(touches.indexOf(16) >= 0){ //Shift
-        console.log("x : " + pers.position.x + "| y : " + pers.position.y)
         if(touches.indexOf(38) >= 0){//haut
             pers.headUp();
         }
@@ -94,20 +95,25 @@ function move(){
     }else{ //pas shift
         if(touches.indexOf(38) >= 0){//haut
             pers.forward(map)
-            songPied.play()
+            deplacement = true
         }
         if(touches.indexOf(40) >= 0){//bas
             pers.backward(map)
-            songPied.play()
+            deplacement = true
         }
     }
     if(touches.indexOf(37) >= 0){//gauche
         pers.leftward(map)
-        songPied.play()
+        deplacement = true
     }
     if(touches.indexOf(39) >= 0){//droite
         pers.rightward(map)
+        deplacement = true
+    }
+    if(deplacement){
         songPied.play()
+    }else{
+        songPied.pause()
     }
 }
 
@@ -119,7 +125,9 @@ function collision(){
                 pers.menu.visible = true
                 balise.actif = true
                 pers.menu.text = balise.text
+                pers.menu.textDefault = balise.text
                 songInterupteur.play()
+                songPied.pause()
             }
         }else{
             balise.actif = false
@@ -135,6 +143,7 @@ function Animer() {
     if(pers.enable == true){
         if(touches.length > 0){
             move()
+            console.log("x : " + pers.position.x + "| y : " + pers.position.y)
             collision()
         }else{
             songPied.pause()
@@ -146,7 +155,7 @@ function Animer() {
                 pers.enable = true
             }
         }else if(touches.indexOf(8) >= 0){
-            if(pers.menu.text.length > 0){
+            if(pers.menu.text.length > pers.menu.textDefault.length){
                 pers.menu.text = pers.menu.text.substring(0, pers.menu.text.length-1)
                 pers.menu.setText(pers.menu.text)
             }
