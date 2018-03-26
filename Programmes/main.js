@@ -120,6 +120,7 @@ function collision(){
                 balise.actif = true
                 pers.menu.text = balise.text
                 songInterupteur.play()
+                songPied.pause()
             }
         }else{
             balise.actif = false
