@@ -85,7 +85,7 @@ function Map(imageURL, objectURL){
     indices[3].translateZ(-1.2)
 
     //Indice 5
-    indices.push(new Panel("ベッド (bedo) signifi le lit. \nEn fait, c'est un mot anglais(bed) que les japonais se sont appropriés", 40, 50, 50, 2))
+    indices.push(new Panel("ベッド (bedo) signifi le lit. \nEn fait, c'est un mot anglais(bed) que les japonais se sont appropriés", 20, 30, 50, 2))
     indices[4].transparent = true
     indices[4].rotation.x = Math.PI * 90 / 180
     indices[4].rotation.y = Math.PI * -90 / 180
@@ -94,12 +94,12 @@ function Map(imageURL, objectURL){
     indices[4].translateZ(-10.6)
 
     //Indice 6
-    indices.push(new Panel("寝る (neru) signifi être couché...\n Mais comme pour un français, un japonais utilise ce terme pour dire dormir", 40, 48, 50, 2))
+    indices.push(new Panel("寝る (neru) signifi être couché...\n Mais comme pour un français, un japonais utilise ce terme pour dire dormir", 20, 30, 50, 2))
     indices[5].transparent = true
     indices[5].rotation.x = Math.PI * 90 / 180
     indices[5].rotation.y = Math.PI * -90 / 180
     indices[5].translateX(-3.1)
-    indices[5].translateY(5)
+    indices[5].translateY(2.4)
     indices[5].translateZ(-10.6)
 
 
