@@ -6,6 +6,7 @@ var map = new Map('../TranseptSud/TranseptTexture4096.jpg', '../TranseptSud/tran
 var balises = new Array()
 var touches = []
 var input = ""
+var music = document.getElementById("music");
 // Gestion du clavier
 window.onkeydown = function(event) {
     var e = event || window.event;
@@ -66,6 +67,7 @@ function Init() {
     balises.forEach(balise => {
         map.add(balise)
     });
+    music.play()
 }
 
 /**
