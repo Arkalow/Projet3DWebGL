@@ -6,9 +6,17 @@ var map = new Map('../TranseptSud/TranseptTexture4096.jpg', '../TranseptSud/tran
 var balises = new Array()
 var touches = []
 var input = ""
+
+/**
+ * Son
+ */
 var music = document.getElementById("music");
 var songInterupteur = document.getElementById("songInterupteur")
 var songPied = document.getElementById("songPied")
+var faux = document.getElementById("faux")
+var hourra = document.getElementById("hourra")
+hourra.play()
+hourra.pause()
 
 // Gestion du clavier
 window.onkeydown = function(event) {
@@ -134,12 +142,11 @@ function collision(){
         }
     })
 }
-function Afficher() {
-    renderer.render(scene,pers.camera);
+function Afficher(camera) {
+    renderer.render(scene,camera);
 }
 
 function Animer() {
-    requestAnimationFrame(Animer);
     if(pers.enable == true){
         if(touches.length > 0){
             move()
@@ -151,6 +158,11 @@ function Animer() {
     }else{
         if(touches.indexOf(13) >= 0){//Enter
             if(pers.menu.visible){
+                if(pers.menu.text.includes("reve")){ //Si le personnage à taper rever
+                    win()
+                }else{
+                    faux.play()
+                }
                 pers.menu.visible = false
                 pers.enable = true
             }
@@ -167,7 +179,36 @@ function Animer() {
             pers.menu.setText(pers.menu.text)
         }
     }
-    Afficher();
+    Afficher(pers.camera)
+    requestAnimationFrame(Animer)
+}
+
+function win(){
+    music.pause()
+    hourra.play()
+    alert("Excellent !")
+    alert("Tu as gagné !")
+    alert("Allez tu payes ton coup")
+    alert("わかた！")
+    alert("Ca veut dire que t'es pas beau")
+    alert("Nan je déconne")
+    alert("...")
+    alert("...Bon allez je te laisse")
+    alert("Nan je déconne")
+    alert('Elle est pas mal la musique')
+    alert("...")
+    alert("Nan je déconne")
+    alert("Allez salut !")
+    alert("ce site va s'autodétruire")
+    alert("dans...")
+    for(var i = 0; i < 99;i++){
+        alert(100-i+" secondes")
+    }
+    alert("1 seconde")
+    alert("Et BOOOOM ! ")
+    alert("...")
+    alert("Nan je déconne")
+    document.location.reload(true)
 }
 
 Init();
