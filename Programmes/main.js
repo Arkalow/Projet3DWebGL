@@ -10,6 +10,7 @@ var music = document.getElementById("music");
 var songInterupteur = document.getElementById("songInterupteur")
 var songPied = document.getElementById("songPied")
 
+
 // Gestion du clavier
 window.onkeydown = function(event) {
     var e = event || window.event;
@@ -134,12 +135,11 @@ function collision(){
         }
     })
 }
-function Afficher() {
-    renderer.render(scene,pers.camera);
+function Afficher(camera) {
+    renderer.render(scene,camera);
 }
 
 function Animer() {
-    requestAnimationFrame(Animer);
     if(pers.enable == true){
         if(touches.length > 0){
             move()
@@ -151,6 +151,9 @@ function Animer() {
     }else{
         if(touches.indexOf(13) >= 0){//Enter
             if(pers.menu.visible){
+                if(pers.menu.text.includes("reve")){ //Si le personnage à taper rever
+                    win()
+                }
                 pers.menu.visible = false
                 pers.enable = true
             }
@@ -167,7 +170,13 @@ function Animer() {
             pers.menu.setText(pers.menu.text)
         }
     }
-    Afficher();
+    Afficher(pers.camera);
+    requestAnimationFrame(Animer);
+}
+
+function win(){
+    alert("Excellent !")
+    document.location.reload(true);
 }
 
 Init();
