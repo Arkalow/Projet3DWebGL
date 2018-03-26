@@ -77,6 +77,8 @@ function Init() {
  * Déplacement du personnage
  */
 function move(){
+    var deplacement = false//pour savoir quand le personnage translate
+
     if(touches.indexOf(220) >= 0){//<>
         pers.rotate(1)
     }
@@ -94,20 +96,25 @@ function move(){
     }else{ //pas shift
         if(touches.indexOf(38) >= 0){//haut
             pers.forward(map)
-            songPied.play()
+            deplacement = true
         }
         if(touches.indexOf(40) >= 0){//bas
             pers.backward(map)
-            songPied.play()
+            deplacement = true
         }
     }
     if(touches.indexOf(37) >= 0){//gauche
         pers.leftward(map)
-        songPied.play()
+        deplacement = true
     }
     if(touches.indexOf(39) >= 0){//droite
         pers.rightward(map)
+        deplacement = true
+    }
+    if(deplacement){
         songPied.play()
+    }else{
+        songPied.pause()
     }
 }
 
@@ -137,8 +144,6 @@ function Animer() {
         if(touches.length > 0){
             move()
             collision()
-        }else{
-            songPied.pause()
         }
     }else{
         if(touches.indexOf(13) >= 0){//Enter
