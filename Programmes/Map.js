@@ -42,9 +42,6 @@ function Map(imageURL, objectURL){
         }
         return true
     }
-
-
-
     
     /**
      * Indices

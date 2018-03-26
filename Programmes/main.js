@@ -109,6 +109,7 @@ function collision(){
                 pers.enable = false
                 pers.menu.visible = true
                 balise.actif = true
+                pers.menu.text = balise.text
             }
         }else{
             balise.actif = false
