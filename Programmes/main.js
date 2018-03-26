@@ -182,8 +182,8 @@ function Animer() {
 }
 
 function win(){
-    hourra.play()
     music.pause()
+    hourra.play()
     alert("Excellent !")
     alert("Tu as gagné !")
     alert("Allez tu payes ton coup")
