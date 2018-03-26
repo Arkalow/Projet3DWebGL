@@ -102,10 +102,13 @@ function move(){
 function collision(){
     balises.forEach(balise => {
         if(balise.isCollision(pers.position) == true){ //Si le joueur est sur une balise
-            if(pers.enable == true){
+            if(pers.enable == true && balise.actif == false){
                 pers.enable = false
                 pers.menu.visible = true
+                balise.actif = true
             }
+        }else{
+            balise.actif = false
         }
     })
 }
@@ -115,12 +118,12 @@ function Afficher() {
 
 function Animer() {
     requestAnimationFrame(Animer);
-    if(touches.length > 0){
-        if(pers.enable == true){
+    if(pers.enable == true){
+        if(touches.length > 0){
             move()
+            collision()
         }
-        collision()
-
+    }else{
         if(touches.indexOf(13) >= 0){//Enter
             if(pers.menu.visible){
                 pers.menu.visible = false
