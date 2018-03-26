@@ -6,6 +6,10 @@ var map = new Map('../TranseptSud/TranseptTexture4096.jpg', '../TranseptSud/tran
 var balises = new Array()
 var touches = []
 var input = ""
+var music = document.getElementById("music");
+var songInterupteur = document.getElementById("songInterupteur")
+var songPied = document.getElementById("songPied")
+
 // Gestion du clavier
 window.onkeydown = function(event) {
     var e = event || window.event;
@@ -66,6 +70,7 @@ function Init() {
     balises.forEach(balise => {
         map.add(balise)
     });
+    music.play()
 }
 
 /**
@@ -89,16 +94,20 @@ function move(){
     }else{ //pas shift
         if(touches.indexOf(38) >= 0){//haut
             pers.forward(map)
+            songPied.play()
         }
         if(touches.indexOf(40) >= 0){//bas
             pers.backward(map)
+            songPied.play()
         }
     }
     if(touches.indexOf(37) >= 0){//gauche
         pers.leftward(map)
+        songPied.play()
     }
     if(touches.indexOf(39) >= 0){//droite
         pers.rightward(map)
+        songPied.play()
     }
 }
 
@@ -110,6 +119,7 @@ function collision(){
                 pers.menu.visible = true
                 balise.actif = true
                 pers.menu.text = balise.text
+                songInterupteur.play()
             }
         }else{
             balise.actif = false
@@ -126,6 +136,8 @@ function Animer() {
         if(touches.length > 0){
             move()
             collision()
+        }else{
+            songPied.pause()
         }
     }else{
         if(touches.indexOf(13) >= 0){//Enter
