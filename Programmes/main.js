@@ -145,6 +145,8 @@ function Animer() {
             move()
             console.log("x : " + pers.position.x + "| y : " + pers.position.y)
             collision()
+        }else{
+            songPied.pause()
         }
     }else{
         if(touches.indexOf(13) >= 0){//Enter
