@@ -85,20 +85,22 @@ function Init() {
 function move(){
     var deplacement = false//pour savoir quand le personnage translate
 
-    if(touches.indexOf(220) >= 0){//<>
-        pers.rotate(1)
-    }
-    if(touches.indexOf(87) >= 0){//w
-        pers.rotate(-1)
-    }
-    if(touches.indexOf(16) >= 0){ //Shift
+
+    if(touches.indexOf(16) >= 0){ //Shift = rotation
         if(touches.indexOf(38) >= 0){//haut
             pers.headUp();
         }
         if(touches.indexOf(40) >= 0){//bas
             pers.headDown();
         }
-    }else{ //pas shift
+        if(touches.indexOf(37) >= 0){//left
+        pers.rotate(1)
+        }
+        if(touches.indexOf(39) >= 0){//right
+            pers.rotate(-1)
+        }
+
+    }else{ //pas shift = pas rotation
         if(touches.indexOf(38) >= 0){//haut
             pers.forward(map)
             deplacement = true
@@ -107,20 +109,22 @@ function move(){
             pers.backward(map)
             deplacement = true
         }
+        if(touches.indexOf(37) >= 0){//gauche
+            pers.leftward(map)
+            deplacement = true
+        }
+        if(touches.indexOf(39) >= 0){//droite
+            pers.rightward(map)
+            deplacement = true
+        }
     }
-    if(touches.indexOf(37) >= 0){//gauche
-        pers.leftward(map)
-        deplacement = true
-    }
-    if(touches.indexOf(39) >= 0){//droite
-        pers.rightward(map)
-        deplacement = true
-    }
+
     if(deplacement){
         songPied.play()
     }else{
         songPied.pause()
     }
+    console.log(touches)
 }
 
 function collision(){
@@ -148,7 +152,7 @@ function Animer() {
     if(pers.enable == true){
         if(touches.length > 0){
             move()
-            console.log("x : " + pers.position.x + "| y : " + pers.position.y)
+            //console.log("x : " + pers.position.x + "| y : " + pers.position.y)
             collision()
         }else{
             songPied.pause()
