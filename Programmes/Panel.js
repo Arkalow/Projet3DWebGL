@@ -11,6 +11,7 @@ function Panel(text, height, width, resolution, police){
     this.background =  '#252000'
     this.color = 'black'
     this.text = text
+    this.textDefault = text
 
     this.setText = function(text){
         //Fond
