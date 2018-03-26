@@ -1,5 +1,5 @@
 function Balise(tailleX, tailleY, text){
-    this.text = "君はベッドの内に寝る"
+    this.text = text
     this.tailleX = tailleX
     this.tailleY = tailleY
     var geometry = new THREE.CubeGeometry(this.tailleX,this.tailleY , 0.01)
