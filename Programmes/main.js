@@ -51,15 +51,15 @@ function Init() {
     /**
      * Lumière global (Pour les tests)
      */
-    // var light = new THREE.AmbientLight();
-    // scene.add(light)
+    var light = new THREE.AmbientLight();
+    scene.add(light)
     
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
     window.addEventListener('resize', onWindowResize, false);
 
-    var balise = new Balise(7, 4, "君はベッドの内に寝る\n\n Où es tu ?\n\n=>")
+    var balise = new Balise(7, 5, "君はベッドの内に寝る\n\n Où es tu ?\n\n=>")
     balise.position.x = 4.9
     balise.position.y = 20.3
     balises.push(balise)

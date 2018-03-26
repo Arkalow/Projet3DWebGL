@@ -8,7 +8,7 @@ function Map(imageURL, objectURL){
     manager.onProgress = function (item, loaded, total) {
         console.log(item, loaded, total);
     };
-    var texture = new THREE.Texture();
+    var texture = new THREE.Texture({transparent: true});
 
     var loader = new THREE.ImageLoader(manager);
     loader.load(imageURL, function (image) {
