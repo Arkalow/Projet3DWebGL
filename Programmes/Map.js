@@ -49,7 +49,7 @@ function Map(imageURL, objectURL){
     var indices = new Array()
 
     //Indice 1
-    indices.push(new Panel("En japonais il n'y à pas la notion de pronom... \n\n Pour dire toi on écrit 君（kimi)", 20, 30, 50, 2))
+    indices.push(new Panel("En japonais il n'y a pas la notion de pronom... \n\n Pour dire toi on écrit 君（kimi)", 20, 30, 50, 2))
     indices[0].transparent = true
     indices[0].rotation.x = Math.PI * 90 / 180
     indices[0].rotation.y = Math.PI * 90 / 180
@@ -67,7 +67,7 @@ function Map(imageURL, objectURL){
     indices[1].translateZ(-1.2)
 
     //Indice 3
-    indices.push(new Panel("La particule の (no) est utilisé pour exprimer l'appartenance.\n Par exemple :\n\nベッドの上 (bedonoue) signifi le dessus du lit", 20, 30, 50, 2))
+    indices.push(new Panel("La particule の (no) est utilisée pour exprimer l'appartenance.\n Par exemple :\n\nベッドの上 (bedonoue) signifie le dessus du lit", 20, 30, 50, 2))
     indices[2].transparent = true
     indices[2].rotation.x = Math.PI * 90 / 180
     indices[2].rotation.y = Math.PI * 90 / 180
@@ -85,7 +85,7 @@ function Map(imageURL, objectURL){
     indices[3].translateZ(-1.2)
 
     //Indice 5
-    indices.push(new Panel("ベッド (bedo) signifi le lit. \nEn fait, c'est un mot anglais(bed) que les japonais se sont appropriés", 20, 30, 50, 2))
+    indices.push(new Panel("ベッド (bedo) signifie le lit. \nEn fait, c'est un mot anglais(bed) que les japonais se sont appropriés", 20, 30, 50, 2))
     indices[4].transparent = true
     indices[4].rotation.x = Math.PI * 90 / 180
     indices[4].rotation.y = Math.PI * -90 / 180
@@ -94,7 +94,7 @@ function Map(imageURL, objectURL){
     indices[4].translateZ(-10.6)
 
     //Indice 6
-    indices.push(new Panel("寝る (neru) signifi être couché...\n Mais comme pour un français, un japonais utilise ce terme pour dire dormir", 20, 30, 50, 2))
+    indices.push(new Panel("寝る (neru) signifie être couché...\n Mais comme pour un français, un japonais utilise ce terme pour dire dormir", 20, 30, 50, 2))
     indices[5].transparent = true
     indices[5].rotation.x = Math.PI * 90 / 180
     indices[5].rotation.y = Math.PI * -90 / 180
